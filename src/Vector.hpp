@@ -6,11 +6,13 @@ class Vector{
     int x;
     int y;
     int z;
+    int timeMs; // delta for speed measurement
     public:
-    Vector(int x, int y, int z){
+    Vector(int x, int y, int z, int timeMs){
         this.x = x;
         this.y = y;
         this.z = z;
+        this.timeMs = timeMs; 
     }
     int getX(){
         return this.x;
@@ -21,14 +23,20 @@ class Vector{
     int getZ(){
         return this.z;
     }
-    int setX(int x){
+    int getTimeMs(){
+        return this.timeMs;
+    }
+    void setX(int x){
         this.x = x;
     }
-    int setY(int y){
+    void setY(int y){
         this.y = y;
     }
-    int setZ(int z){
+    void setZ(int z){
         this.z = z;
+    }
+    void setTimeMs(int timeMs){
+        this.timeMs = timeMs;
     }
 }
 
