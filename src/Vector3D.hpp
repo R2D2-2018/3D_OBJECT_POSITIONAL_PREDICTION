@@ -2,33 +2,37 @@
 #define VECTOR3D_HPP
 class Vector3D {
   private:
-    int x;
-    int y;
-    int z;
+    int X;
+    int Y;
+    int Z;
+    int timeMs;
 
   public:
-    Vector3D(int x, int y, int z) {
-        this.x = x;
-        this.y = y;
-        this.z = z;
-    }
+    Vector3D(int x, int y, int z, int ms): X(x), Y(y), Z(z), timeMs(ms){};
+
     int getX() {
-        return this.x;
+        return X;
     }
     int getY() {
-        return this.y;
+        return Y;
     }
     int getZ() {
-        return this.z;
+        return Z;
     }
-    int setX(int x) {
-        this.x = x;
+    int getTimeMs(){
+        return timeMs;
     }
-    int setY(int y) {
-        this.y = y;
+    void setX(int x) {
+        X = x;
     }
-    int setZ(int z) {
-        this.z = z;
+    void setY(int y) {
+        Y= y;
+    }
+    void setZ(int z) {
+        Z = z;
+    }
+    void setTimeMs(int ms){
+        timeMs = ms;
     }
 };
 
