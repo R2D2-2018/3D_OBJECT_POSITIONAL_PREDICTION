@@ -7,7 +7,7 @@ Vector3D Calculations::calculatePositionAfterMs(Vector3D position, Vector3D spee
     int x, y, z;
     x = position.getX() + (speed.getX() * (ms / measurementDelay));
     y = position.getY() + (speed.getY() * (ms / measurementDelay));
-    z = position.getZ();
+    z = position.getZ() + (speed.getZ() * (ms / measurementDelay));
     Vector3D newLocation =  Vector3D(x, y, z);
     return newLocation;
 }
