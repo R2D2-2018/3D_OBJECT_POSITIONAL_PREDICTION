@@ -1,5 +1,7 @@
 #ifndef VECTOR3D_HPP
 #define VECTOR3D_HPP
+#include <stdint.h>
+
 class Vector3D {
   private:
     int32_t x;
