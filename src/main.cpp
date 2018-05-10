@@ -9,7 +9,9 @@ int main() {
     hwlib::cout << "Hello world!" << hwlib::endl;
 
     auto predictor = ObjectTrajectoryPredictor();
-    hwlib::cout << "x: " << predictor.getPosition().getX() << " y: " << predictor.getPosition().getY() << " z: " << predictor.getPosition().getZ() << hwlib::endl;
+    hwlib::cout << "x: " << predictor.getPosition().getX() 
+    << " y: " << predictor.getPosition().getY() 
+    << " z: " << predictor.getPosition().getZ() << hwlib::endl;
 
     return 0;
 }
