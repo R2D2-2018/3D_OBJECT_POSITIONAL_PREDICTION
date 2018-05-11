@@ -4,7 +4,7 @@
 
 /**
  * @file
- * @brief     Vector3D is adatatype that represents a point in a 3D world. 
+ * @brief     Vector3D is a datatype that represents a point in a 3D world. 
  * It consists of integers coordinates x, y and z.
  * @author    Max Beunk & Daniel van Vliet
  * @license   See LICENSE
