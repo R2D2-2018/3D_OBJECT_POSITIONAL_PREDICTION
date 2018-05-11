@@ -19,6 +19,18 @@ public:
      */
     Vector3D getPosition();
 
+    /**
+     * @brief
+     * 
+     * This function calculates the average speed between two positions.
+     * 
+     * @param[in] Two Vector3D positions and the time difference in ms which is > 0.
+     * @return The average speed of the object between the given positions.
+     */
+    Vector3D getSpeed(const Vector3D & position_1, const Vector3D & position_2, 
+    const int32_t & time_ms);
+    
+
 };
 
 

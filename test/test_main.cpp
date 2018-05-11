@@ -11,3 +11,20 @@ TEST_CASE("ObjectTrajectoryPredictor getPosition() returns a Vector3D") {
     
     REQUIRE(temp_predictor.getPosition().getX() == 0);
 }
+
+TEST_CASE( "ObjectTrajectoryPredictor getSpeed() Test Case" ) {
+    const auto pos_1 = Vector3D(0, 0, 0);
+    const auto pos_2 = Vector3D(10, 15, 20);
+    auto speed = predictor.getSpeed(pos_1, pos_2, 1500);
+    REQUIRE(speed.getX() == 6)
+    REQUIRE(speed.getY() == 10)
+    REQUIRE(speed.getZ() == 13)
+
+    pos_1 = Vector3D(20, 15, 10);
+    pos_2 = Vector3D(10, 15, 20);
+    speed = predictor.getSpeed(pos_1, pos_2, 500);
+    REQUIRE(speed.getX() == -20)
+    REQUIRE(speed.getY() == 0)
+    REQUIRE(speed.getZ() == 20)
+
+}
