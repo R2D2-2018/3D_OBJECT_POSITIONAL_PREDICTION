@@ -21,10 +21,8 @@ class Vector3D {
      x(xcoord), y(ycoord), z(zcoord){};
 
     /**
-     * @brief 
+     * @brief Getter method for x.
      * 
-     * Getter method for x.
-     *
      * @return int32_t x
      */
     int32_t getX() const {
@@ -32,10 +30,8 @@ class Vector3D {
     }
     
     /**
-     * @brief 
+     * @brief Getter method for y.
      * 
-     * Getter method for y.
-     *
      * @return int32_t y
      */
     int32_t getY() const {
@@ -44,10 +40,8 @@ class Vector3D {
 
 
     /**
-     * @brief 
+     * @brief Getter method for z.
      * 
-     * Getter method for z.
-     *
      * @return int32_t z
      */
     int32_t getZ() const {
@@ -55,10 +49,8 @@ class Vector3D {
     }
 
     /**
-     * @brief 
+     * @brief Sets x to new value.
      * 
-     * Sets x to new value.
-     *
      * @param[in] int32_t: new x
      */
     void setX(const int32_t & xcoord) {
@@ -66,10 +58,8 @@ class Vector3D {
     }
 
     /**
-     * @brief 
+     * @brief Sets y to new value.
      * 
-     * Sets y to new value.
-     *
      * @param[in] int32_t: new y
      */
     void setY(const int32_t & ycoord) {
@@ -77,9 +67,7 @@ class Vector3D {
     }
 
     /**
-     * @brief 
-     * 
-     * Sets z to new value.
+     * @brief Sets z to new value.
      *
      * @param[in] int32_t: new z
      */

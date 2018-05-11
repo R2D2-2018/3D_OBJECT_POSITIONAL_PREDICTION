@@ -9,7 +9,7 @@ Vector3D ObjectTrajectoryPredictor::getPosition(){
 }
  
 
- Vector3D ObjectTrajectoryPredictor::getSpeed(const Vector3D & pos_1, 
+ Vector3D ObjectTrajectoryPredictor::calculateSpeed(const Vector3D & pos_1, 
         const Vector3D & pos_2, const int32_t & timeMs) {
     return Vector3D(
         ((pos_2.getX() - pos_1.getX()) * 1000) / timeMs,
