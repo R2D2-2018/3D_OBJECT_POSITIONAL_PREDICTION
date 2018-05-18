@@ -18,7 +18,8 @@ Vector3D ObjectTrajectoryPredictor::getPosition(){
     );
  }
 
- Vector3D ObjectTrajectoryPredictor::calculatePositionAfterMs(Vector3D position, Vector3D speed, uint32_t ms, uint32_t measurementDelay){
+ Vector3D ObjectTrajectoryPredictor::calculatePositionAfterMs(Vector3D position, Vector3D speed, uint32_t ms,
+        uint32_t measurementDelay) {
     int x, y, z;
     if (measurementDelay > 0) {
         x = position.getX() + (speed.getX() * (ms / measurementDelay));
