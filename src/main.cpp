@@ -1,5 +1,5 @@
 #include "wrap-hwlib.hpp"
-#include "object-trajectory-predictor.hpp"
+#include "object_trajectory_predictor.hpp"
 
 
 int main() {
