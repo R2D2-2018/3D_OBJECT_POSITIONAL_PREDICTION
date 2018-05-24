@@ -3,18 +3,25 @@
 
 #include "vector3d.hpp"
 
-
 /**
  * @file
- * @brief     This file contains the ObjectTrajectoryPredictor, it is the main class of the module ObjectPositionalPrediction. 
- * 
+ * @brief     This file contains the ObjectTrajectoryPredictor, it is the main class of the module ObjectPositionalPrediction.
+ *
  * @author    Max Beunk & Daniel van Vliet
  * @license   See LICENSE
  */
 
 class ObjectTrajectoryPredictor {
   private:
-    Vector3D position;
+    int positionsIndex = 0;
+    Vector3D positions[10];
+    int measurementDelay[10];
+    Vector3D speed[10];
+    Vector3D predictedPosition;
+    Vector3D acceleration;
+    int dx;
+    int dy;
+    int dz;
 
   public:
     ObjectTrajectoryPredictor();
@@ -23,7 +30,7 @@ class ObjectTrajectoryPredictor {
      * @brief This function is a getter for the position of the tracked object.
      * @return The current position of the object as Vector3D.
      */
-    Vector3D getPosition();
+    Vector3D getPosition(int index);
 
     /**
      * @brief
@@ -40,11 +47,16 @@ class ObjectTrajectoryPredictor {
      *
      * This function calculates the new position of the object after, by user given, milliseconds
      *
-     * @param[in] The current position of the object, the speed of this object, the amount of milliseconds and the delay used
-     * between 2 measuring points while calculating speed
+     * @param[in] The current position of the object, the speed of this object, the amount of milliseconds
      * @return A vector object containing the new position of the object
      */
-    Vector3D calculatePositionAfterMs(Vector3D position, Vector3D speed, uint32_t ms, uint32_t measurementDelay);
+    Vector3D calculatePositionAfterMs(Vector3D position, Vector3D speed, uint32_t ms);
+
+    bool setSample(Vector3D newPosition, int measurementDelay = 0);
+
+    Vector3D getPredictedPosition(int ms);
+
+    Vector3D calculateAcceleration();
 };
 
 #endif // OBJECTTRAJECTORYPREDICTOR_HPP
