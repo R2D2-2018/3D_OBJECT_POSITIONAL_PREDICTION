@@ -15,8 +15,8 @@ TEST_CASE("ObjectTrajectoryPredictor::CalculatePositionAfterMs() returns correct
     REQUIRE(tempPredictor.calculatePositionAfterMs(Vector3D(2, 3, 5), Vector3D(0, 0, 2), 500) == Vector3D(2, 3, 5));
     REQUIRE(tempPredictor.calculatePositionAfterMs(Vector3D(2, 3, 5), Vector3D(1, 0, 0), 500) == Vector3D(4, 3, 5));
     REQUIRE(tempPredictor.calculatePositionAfterMs(Vector3D(2, 3, 5), Vector3D(1, 0, 0), 1000) == Vector3D(3, 3, 5));
-    REQUIRE(tempPredictor.calculatePositionAfterMs(Vector3D(2, 3, 5), Vector3D(1, 0, 0), 500) == Vector3D(4, 3, 5));
-    REQUIRE(tempPredictor.calculatePositionAfterMs(Vector3D(2, 3, 5), Vector3D(2, 0, 0), 500) == Vector3D(6, 3, 5));
+    REQUIRE(tempPredictor.calculatePositionAfterMs(Vector3D(2, 3, 5), Vector3D(1, 0, 0), 500) == Vector3D(2, 3, 5));
+    REQUIRE(tempPredictor.calculatePositionAfterMs(Vector3D(2, 3, 5), Vector3D(2, 0, 0), 500) == Vector3D(3, 3, 5));
 }
 // TEST_CASE("ObjectTrajectoryPredictor getPosition() returns a Vector3D") {
 //     auto tempPredictor = ObjectTrajectoryPredictor();
