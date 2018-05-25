@@ -9,20 +9,20 @@ TEST_CASE("Example Test Case") {
 
 TEST_CASE("ObjectTrajectoryPredictor::CalculatePositionAfterMs() returns correct values") {
     auto tempPredictor = ObjectTrajectoryPredictor();
-    REQUIRE(tempPredictor.calculatePositionAfterMs(Vector3D(2, 3, 5), Vector3D(0, 0, 0), 500, 500) == Vector3D(2, 3, 5));
-    REQUIRE(tempPredictor.calculatePositionAfterMs(Vector3D(2, 3, 5), Vector3D(2, 0, 0), 500, 500) == Vector3D(4, 3, 5));
-    REQUIRE(tempPredictor.calculatePositionAfterMs(Vector3D(2, 3, 5), Vector3D(0, 2, 0), 500, 500) == Vector3D(2, 5, 5));
-    REQUIRE(tempPredictor.calculatePositionAfterMs(Vector3D(2, 3, 5), Vector3D(0, 0, 2), 500, 500) == Vector3D(2, 3, 7));
-    REQUIRE(tempPredictor.calculatePositionAfterMs(Vector3D(2, 3, 5), Vector3D(1, 0, 0), 500, 0) == Vector3D(0, 0, 0));
-    REQUIRE(tempPredictor.calculatePositionAfterMs(Vector3D(2, 3, 5), Vector3D(1, 0, 0), 1000, 500) == Vector3D(4, 3, 5));
-    REQUIRE(tempPredictor.calculatePositionAfterMs(Vector3D(2, 3, 5), Vector3D(1, 0, 0), 500, 1000) == Vector3D(3, 3, 5));
-    REQUIRE(tempPredictor.calculatePositionAfterMs(Vector3D(2, 3, 5), Vector3D(2, 0, 0), 500, 1000) == Vector3D(3, 3, 5));
+    REQUIRE(tempPredictor.calculatePositionAfterMs(Vector3D(2, 3, 5), Vector3D(0, 0, 0), 500) == Vector3D(2, 3, 5));
+    REQUIRE(tempPredictor.calculatePositionAfterMs(Vector3D(2, 3, 5), Vector3D(2, 0, 0), 500) == Vector3D(3, 3, 5));
+    REQUIRE(tempPredictor.calculatePositionAfterMs(Vector3D(2, 3, 5), Vector3D(0, 2, 0), 500) == Vector3D(2, 4, 5));
+    REQUIRE(tempPredictor.calculatePositionAfterMs(Vector3D(2, 3, 5), Vector3D(0, 0, 2), 500) == Vector3D(2, 3, 5));
+    REQUIRE(tempPredictor.calculatePositionAfterMs(Vector3D(2, 3, 5), Vector3D(1, 0, 0), 500) == Vector3D(4, 3, 5));
+    REQUIRE(tempPredictor.calculatePositionAfterMs(Vector3D(2, 3, 5), Vector3D(1, 0, 0), 1000) == Vector3D(3, 3, 5));
+    REQUIRE(tempPredictor.calculatePositionAfterMs(Vector3D(2, 3, 5), Vector3D(1, 0, 0), 500) == Vector3D(4, 3, 5));
+    REQUIRE(tempPredictor.calculatePositionAfterMs(Vector3D(2, 3, 5), Vector3D(2, 0, 0), 500) == Vector3D(6, 3, 5));
 }
-TEST_CASE("ObjectTrajectoryPredictor getPosition() returns a Vector3D") {
-    auto tempPredictor = ObjectTrajectoryPredictor();
+// TEST_CASE("ObjectTrajectoryPredictor getPosition() returns a Vector3D") {
+//     auto tempPredictor = ObjectTrajectoryPredictor();
 
-    REQUIRE(tempPredictor.getPosition().getX() == 0);
-}
+//     REQUIRE(tempPredictor.getPosition().getX() == 0);
+// }
 
 TEST_CASE("ObjectTrajectoryPredictor calculateSpeed() Test Case") {
     auto tempPredictor = ObjectTrajectoryPredictor();
@@ -44,6 +44,33 @@ TEST_CASE("ObjectTrajectoryPredictor calculateSpeed() Test Case") {
     REQUIRE(speed.getX() == 0);
     REQUIRE(speed.getY() == 0);
     REQUIRE(speed.getZ() == 0);
+}
 
+TEST_CASE("ObjectTrajectoryPredictor setSample is saving positions in array") {
+    auto tempPredictor = ObjectTrajectoryPredictor();
+    auto pos1 = Vector3D(0, 0, 0);
+    auto pos2 = Vector3D(1, 2, 3);
+    auto pos3 = Vector3D(3, 5, 6);
 
+    tempPredictor.setSample(pos1);
+    tempPredictor.setSample(pos2);
+    tempPredictor.setSample(pos3);
+
+    REQUIRE(getPosition(0) == pos1);
+    REQUIRE(getPosition(1) == pos2);
+    REQUIRE(getPosition(2) == pos3);
+}
+
+TEST_CASE("ObjectTrajectoryPredictor setSample cant overflow") {
+    auto tempPredictor = ObjectTrajectoryPredictor();
+    auto pos = Vector3D(0, 0, 0);
+    bool check[13];
+
+    for (int i = 0; i < 12; i++) {
+        check[i] = tempPredictor.setSample(pos);
+    }
+
+    REQUIRE(check[9] == 0);
+    REQUIRE(check[10] == 1);
+    REQUIRE(check[11] == 1);
 }
