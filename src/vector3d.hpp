@@ -73,6 +73,141 @@ class Vector3D {
     void setZ(const int32_t &zcoord) {
         z = zcoord;
     }
+
+    /**
+     * @brief += operator.
+     *
+     * @param[in] Vector3D: rhs.
+     *
+     * returns the sum as this vector.
+     */
+    Vector3D &operator+=(const Vector3D &rhs) {
+        x += rhs.x;
+        y += rhs.y;
+        z += rhs.z;
+        return *this;
+    }
+
+    /**
+     * @brief -= operator.
+     *
+     * @param[in] Vector3D: rhs.
+     *
+     * returns the difference as this vector.
+     */
+    Vector3D &operator-=(const Vector3D &rhs) {
+        x -= rhs.x;
+        y -= rhs.y;
+        z -= rhs.z;
+        return *this;
+    }
+
+    /**
+     * @brief *= operator.
+     *
+     * @param[in] Vector3D: rhs.
+     *
+     * returns the multiplied number as this vector.
+     */
+    Vector3D &operator*=(const Vector3D &rhs) {
+        x *= rhs.x;
+        y *= rhs.y;
+        z *= rhs.z;
+        return *this;
+    }
+
+    /**
+     * @brief /= operator
+     *
+     * The method checks if the rhs has an attribute that is 0. If so, to prevent division by 0, it returns this vector instead of
+     * calculating.
+     *
+     * @param[in] Vector3D: rhs.
+     *
+     * returns the multiplied number as this vector.
+     */
+    Vector3D &operator/=(const Vector3D &rhs) {
+        if (rhs.x == 0 || rhs.y == 0 || rhs.z == 0) {
+            return *this;
+        }
+        x /= rhs.x;
+        y /= rhs.y;
+        z /= rhs.z;
+        return *this;
+    }
+
+    /**
+     * @brief == operator.
+     *
+     * @param[in] Vector3D: rhs.
+     *
+     * returns if the rhs vector is equal to this vector.
+     */
+    bool operator==(const Vector3D &rhs) const {
+        return x == rhs.x && y == rhs.y && z == rhs.z;
+    }
+
+    /**
+     * @brief == operator.
+     *
+     * @param[in] Vector3D: rhs.
+     *
+     * returns if the rhs vector is not equal to this vector.
+     */
+    bool operator!=(const Vector3D &rhs) const {
+        return x != rhs.x || y != rhs.y || z != rhs.z;
+    }
+
+    /**
+     * @brief + operator.
+     *
+     * @param[in] Vector3D: rhs.
+     *
+     * returns the sum vector of rhs and this vector.
+     */
+
+    Vector3D operator+(const Vector3D &rhs) const {
+        return Vector3D(x + rhs.x, y + rhs.y, z + rhs.z);
+    }
+
+    /**
+     * @brief - operator.
+     *
+     * @param[in] Vector3D: rhs.
+     *
+     * returns the difference vector of rhs and this vector.
+     */
+
+    Vector3D operator-(const Vector3D &rhs) const {
+        return Vector3D(x - rhs.x, y - rhs.y, z - rhs.z);
+    }
+
+    /**
+     * @brief * operator.
+     *
+     * @param[in] Vector3D: rhs.
+     *
+     * returns the multiplied vector of rhs and this vector.
+     */
+
+    Vector3D operator*(const Vector3D &rhs) const {
+        return Vector3D(x * rhs.x, y * rhs.y, z * rhs.z);
+    }
+
+    /**
+     * @brief / operator.
+     *
+     * @param[in] Vector3D: rhs.
+     *
+     * returns the divided vector of rhs and this vector.
+     */
+
+    Vector3D operator/(const Vector3D &rhs) const {
+        if (rhs.x != 0 && rhs.y != 0 && rhs.z != 0) {
+            return Vector3D(x / rhs.x, y / rhs.y, z / rhs.z);
+        }
+        return Vector3D();
+    }
 };
 
 #endif // VECTOR3D_HPP
