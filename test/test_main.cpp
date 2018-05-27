@@ -12,7 +12,7 @@ TEST_CASE("ObjectTrajectoryPredictor::CalculatePositionAfterMs() returns correct
     REQUIRE(tempPredictor.calculatePositionAfterMs(Vector3D(2, 3, 5), Vector3D(0, 0, 0), 500) == Vector3D(2, 3, 5));
     REQUIRE(tempPredictor.calculatePositionAfterMs(Vector3D(2, 3, 5), Vector3D(2, 0, 0), 500) == Vector3D(3, 3, 5));
     REQUIRE(tempPredictor.calculatePositionAfterMs(Vector3D(2, 3, 5), Vector3D(0, 2, 0), 500) == Vector3D(2, 4, 5));
-    REQUIRE(tempPredictor.calculatePositionAfterMs(Vector3D(2, 3, 5), Vector3D(0, 0, 2), 500) == Vector3D(2, 3, 5));
+    REQUIRE(tempPredictor.calculatePositionAfterMs(Vector3D(2, 3, 5), Vector3D(0, 0, 2), 500) == Vector3D(2, 3, 6));
     REQUIRE(tempPredictor.calculatePositionAfterMs(Vector3D(2, 3, 5), Vector3D(1, 0, 0), 500) == Vector3D(4, 3, 5));
     REQUIRE(tempPredictor.calculatePositionAfterMs(Vector3D(2, 3, 5), Vector3D(1, 0, 0), 1000) == Vector3D(3, 3, 5));
     REQUIRE(tempPredictor.calculatePositionAfterMs(Vector3D(2, 3, 5), Vector3D(1, 0, 0), 500) == Vector3D(2, 3, 5));
@@ -65,9 +65,9 @@ TEST_CASE("ObjectTrajectoryPredictor setSample cant overflow") {
         check[i] = tempPredictor.setSample(pos);
     }
 
-    REQUIRE(check[9] == 0);
-    REQUIRE(check[10] == 1);
-    REQUIRE(check[11] == 1);
+    REQUIRE(check[9] == 1);
+    REQUIRE(check[10] == 0);
+    REQUIRE(check[11] == 0);
 }
 
 TEST_CASE("Vector3D operator== and operator !=") {
