@@ -13,7 +13,6 @@
 
 class ObjectTrajectoryPredictor {
   private:
-    int positionsIndex = 0;
     Vector3D positions[10];
     int measurementDelay[10];
     Vector3D speed;
@@ -57,6 +56,17 @@ class ObjectTrajectoryPredictor {
      * @param[in] a new sample as vector3D, the object id and the delay between last sample in milliseconds.
      */
     void addSample(Vector3D newPosition, uint8_t objectId, uint32_t delayMs);
+
+    /**
+     * @brief
+     *
+     * This function predicts the position after given ms, using the interal stored samples.
+     * If given time is 0, it will return the previous prediction.
+     *
+     * @param[in] objectId as int, ms as int
+     * The time for next prediction needs to be the time since last added sample.
+     * @return A Vector3D containing the predicted position of the object
+     */
 
     Vector3D predictPosition(uint8_t objectId, uint32_t ms);
 
