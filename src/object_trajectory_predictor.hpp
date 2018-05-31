@@ -20,13 +20,6 @@ class ObjectTrajectoryPredictor {
     Vector3D predictedPosition;
 
 
-
-    /**
-     * @brief This function is a getter for the position of the tracked object.
-     * @return The current position of the object as Vector3D.
-     */
-    Vector3D getPosition(int index);
-
     /**
      * @brief
      *
@@ -49,10 +42,13 @@ class ObjectTrajectoryPredictor {
     ObjectTrajectoryPredictor();
     Vector3D calculatePositionAfterMs(Vector3D position, Vector3D speed, uint32_t ms);
 
-    bool addSample(Vector3D newPosition, int measurementDelay = 0);
+    bool addSample(Vector3D newPosition, uint8_t objectId, int delay);
 
-    Vector3D getPredictedPosition(int ms);
+    Vector3D getPredictedPosition(uint8_t objectId, uint32_t ms);
 
+    Vector3D getSpeed(uint8_t objectId);
+
+    void clearSamples(uint8_t objectId);
   
 
 };

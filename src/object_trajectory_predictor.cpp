@@ -4,9 +4,7 @@
 ObjectTrajectoryPredictor::ObjectTrajectoryPredictor() {
 }
 
-Vector3D ObjectTrajectoryPredictor::getPosition(int index) {
-    return positions[index];
-}
+
 
 Vector3D ObjectTrajectoryPredictor::calculateSpeed(const Vector3D &pos_1, const Vector3D &pos_2, const int32_t &timeMs) {
     if (timeMs > 0) {
@@ -26,7 +24,7 @@ Vector3D ObjectTrajectoryPredictor::calculatePositionAfterMs(Vector3D position, 
     return newLocation;
 }
 
-bool ObjectTrajectoryPredictor::addSample(Vector3D newPosition, int delay) {
+bool ObjectTrajectoryPredictor::addSample(Vector3D newPosition, uint8_t objectId, int delay) {
     if (positionsIndex < 10) {
         positions[positionsIndex] = newPosition;
         measurementDelay[positionsIndex] = delay;
@@ -38,7 +36,7 @@ bool ObjectTrajectoryPredictor::addSample(Vector3D newPosition, int delay) {
     }
 }
 
-Vector3D ObjectTrajectoryPredictor::getPredictedPosition(int ms = 0) {
+Vector3D ObjectTrajectoryPredictor::getPredictedPosition(uint8_t objectId, uint32_t ms) {
     if (ms != 0) {
         predictedPosition = calculatePositionAfterMs(positions[positionsIndex - 1], speed[positionsIndex - 1], ms);
     }
