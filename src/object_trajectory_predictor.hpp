@@ -67,11 +67,27 @@ class ObjectTrajectoryPredictor {
      * The time for next prediction needs to be the time since last added sample.
      * @return A Vector3D containing the predicted position of the object
      */
-
     Vector3D predictPosition(uint8_t objectId, uint32_t ms);
 
+    /**
+     * @brief
+     *
+     * This function returns the latest speed for the given objectID.
+     *
+     * @param[in] objectId as int
+     * The time for next prediction needs to be the time since last added sample.
+     * @return A Vector3D as speed of the object.
+     */
     Vector3D getSpeed(uint8_t objectId);
 
+
+    /**
+     * @brief
+     *
+     * This function clears the stored samples for the given objectID
+     *
+     * @param[in] objectId as int
+     */
     void clearSamples(uint8_t objectId);
   
 
