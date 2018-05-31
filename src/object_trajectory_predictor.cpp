@@ -27,21 +27,21 @@ Vector3D ObjectTrajectoryPredictor::calculatePositionAfterMs(Vector3D position, 
 }
 
 void ObjectTrajectoryPredictor::addSample(Vector3D newPosition, uint8_t objectId, uint32_t delayMs) {
-    for (unsigned int i = 0; i < 9; ++i) {
-        positions[i] = positions[i + 1];
-        measurementDelay[i] = measurementDelay[i + 1];
+    for (unsigned int i = 9; i > 0; --i) {
+        positions[i] = positions[i - 1];
+        measurementDelay[i] = measurementDelay[i - 1];
     }
-    positions[9] = newPosition;
-    measurementDelay[9] = delayMs;
+    positions[0] = newPosition;
+    measurementDelay[0] = delayMs;
 
-    speed = calculateSpeed(positions[8], positions[9], delayMs);
+    speed = calculateSpeed(positions[1], positions[0], delayMs);
 }
 
 Vector3D ObjectTrajectoryPredictor::predictPosition(uint8_t objectId, uint32_t ms) {
     if (ms != 0) {
-        return calculatePositionAfterMs(positions[9], speed, ms);
+        return calculatePositionAfterMs(positions[0], speed, ms);
     }
-    return positions[9];
+    return positions[0];
 }
 
 Vector3D ObjectTrajectoryPredictor::getSpeed(uint8_t objectId) {
