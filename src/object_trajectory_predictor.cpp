@@ -24,16 +24,15 @@ Vector3D ObjectTrajectoryPredictor::calculatePositionAfterMs(Vector3D position, 
     return newLocation;
 }
 
-bool ObjectTrajectoryPredictor::addSample(Vector3D newPosition, uint8_t objectId, int delay) {
-    if (positionsIndex < 10) {
-        positions[positionsIndex] = newPosition;
-        measurementDelay[positionsIndex] = delay;
-        speed = calculateSpeed(positions[positionsIndex - 1], newPosition, delay);
-        positionsIndex += 1;
-        return 1;
-    } else {
-        return 0;
+void ObjectTrajectoryPredictor::addSample(Vector3D newPosition, uint8_t objectId, uint32_t delayMs) {
+    for (unsigned int  i = 0; i < 9; ++i){
+        positions[i] = positions[i+1];
+        measurementDelay[i] = measurementDelay[i+1];
     }
+    positions[9] = newPosition;
+    measurementDelay[9] = delayMs;
+
+    speed = calculateSpeed(positions[8], positions[9], delayMs);
 }
 
 Vector3D ObjectTrajectoryPredictor::predictPosition(uint8_t objectId, uint32_t ms) {
