@@ -45,3 +45,7 @@ Vector3D ObjectTrajectoryPredictor::predictPosition(uint8_t objectId, uint32_t m
 Vector3D ObjectTrajectoryPredictor::getSpeed(uint8_t objectId){
     return speed;
 }
+
+void ObjectTrajectoryPredictor::clearSamples(uint8_t objectId){
+    
+}
