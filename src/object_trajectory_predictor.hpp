@@ -38,13 +38,14 @@ class ObjectTrajectoryPredictor {
      * @param[in] The current position of the object, the speed of this object, the amount of milliseconds
      * @return A vector object containing the new position of the object
      */
+
+    Vector3D calculatePositionAfterMs(Vector3D position, Vector3D speed, uint32_t ms);
     public:     
     ObjectTrajectoryPredictor();
-    Vector3D calculatePositionAfterMs(Vector3D position, Vector3D speed, uint32_t ms);
 
     bool addSample(Vector3D newPosition, uint8_t objectId, int delay);
 
-    Vector3D getPredictedPosition(uint8_t objectId, uint32_t ms);
+    Vector3D predictPosition(uint8_t objectId, uint32_t ms);
 
     Vector3D getSpeed(uint8_t objectId);
 
