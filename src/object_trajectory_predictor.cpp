@@ -39,7 +39,7 @@ void ObjectTrajectoryPredictor::addSample(Vector3D newPosition, uint8_t objectId
 
 Vector3D ObjectTrajectoryPredictor::predictPosition(uint8_t objectId, uint32_t ms) {
     if (ms != 0) {
-        calculatePositionAfterMs(positions[9], speed, ms);
+        return calculatePositionAfterMs(positions[9], speed, ms);
     }
     return positions[9];
 }
