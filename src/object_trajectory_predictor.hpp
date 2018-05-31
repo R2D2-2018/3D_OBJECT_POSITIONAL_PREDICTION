@@ -16,7 +16,7 @@ class ObjectTrajectoryPredictor {
     int positionsIndex = 0;
     Vector3D positions[10];
     int measurementDelay[10];
-    Vector3D speed[10];
+    Vector3D speed;
     Vector3D predictedPosition;
 
 

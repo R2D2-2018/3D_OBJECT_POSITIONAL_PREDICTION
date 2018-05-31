@@ -28,7 +28,7 @@ bool ObjectTrajectoryPredictor::addSample(Vector3D newPosition, uint8_t objectId
     if (positionsIndex < 10) {
         positions[positionsIndex] = newPosition;
         measurementDelay[positionsIndex] = delay;
-        speed[positionsIndex] = calculateSpeed(positions[positionsIndex - 1], newPosition, delay);
+        speed = calculateSpeed(positions[positionsIndex - 1], newPosition, delay);
         positionsIndex += 1;
         return 1;
     } else {
@@ -38,7 +38,11 @@ bool ObjectTrajectoryPredictor::addSample(Vector3D newPosition, uint8_t objectId
 
 Vector3D ObjectTrajectoryPredictor::getPredictedPosition(uint8_t objectId, uint32_t ms) {
     if (ms != 0) {
-        predictedPosition = calculatePositionAfterMs(positions[positionsIndex - 1], speed[positionsIndex - 1], ms);
+        predictedPosition = calculatePositionAfterMs(positions[positionsIndex - 1], speed, ms);
     }
     return predictedPosition;
+}
+
+Vector3D ObjectTrajectoryPredictor::getSpeed(uint8_t objectId){
+    return speed;
 }
