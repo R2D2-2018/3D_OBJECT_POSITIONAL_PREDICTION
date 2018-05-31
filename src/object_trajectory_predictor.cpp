@@ -26,7 +26,7 @@ Vector3D ObjectTrajectoryPredictor::calculatePositionAfterMs(Vector3D position, 
     return newLocation;
 }
 
-bool ObjectTrajectoryPredictor::setSample(Vector3D newPosition, int delay) {
+bool ObjectTrajectoryPredictor::addSample(Vector3D newPosition, int delay) {
     if (positionsIndex < 10) {
         positions[positionsIndex] = newPosition;
         measurementDelay[positionsIndex] = delay;

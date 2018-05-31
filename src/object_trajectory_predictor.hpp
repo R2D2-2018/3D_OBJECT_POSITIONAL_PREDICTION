@@ -18,13 +18,8 @@ class ObjectTrajectoryPredictor {
     int measurementDelay[10];
     Vector3D speed[10];
     Vector3D predictedPosition;
-    Vector3D acceleration;
-    int dx;
-    int dy;
-    int dz;
 
-  public:
-    ObjectTrajectoryPredictor();
+
 
     /**
      * @brief This function is a getter for the position of the tracked object.
@@ -50,13 +45,16 @@ class ObjectTrajectoryPredictor {
      * @param[in] The current position of the object, the speed of this object, the amount of milliseconds
      * @return A vector object containing the new position of the object
      */
+    public:     
+    ObjectTrajectoryPredictor();
     Vector3D calculatePositionAfterMs(Vector3D position, Vector3D speed, uint32_t ms);
 
-    bool setSample(Vector3D newPosition, int measurementDelay = 0);
+    bool addSample(Vector3D newPosition, int measurementDelay = 0);
 
     Vector3D getPredictedPosition(int ms);
 
-    Vector3D calculateAcceleration();
+  
+
 };
 
 #endif // OBJECTTRAJECTORYPREDICTOR_HPP
