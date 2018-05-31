@@ -16,8 +16,6 @@ class ObjectTrajectoryPredictor {
     Vector3D positions[10];
     int measurementDelay[10];
     Vector3D speed;
-    Vector3D predictedPosition;
-
 
     /**
      * @brief
@@ -40,18 +38,18 @@ class ObjectTrajectoryPredictor {
 
     Vector3D calculatePositionAfterMs(Vector3D position, Vector3D speed, uint32_t ms);
 
-    public:     
+  public:
     ObjectTrajectoryPredictor();
 
     /**
      * @brief This method adds a new sample and updates speed.
      *
-     *  This method adds a new sample to the internal stored sample array and calculates 
-     *  the latest speed with the new sample array. 
+     *  This method adds a new sample to the internal stored sample array and calculates
+     *  the latest speed with the new sample array.
      *  This function shifts the new sample into the position and measurementDelay arrays.
      *  The position and delay are inserted at the end of the arrays. This is using the First in first out principle.
      *  This method is assuming the sample size of the arrays is 10
-     * 
+     *
      *
      * @param[in] a new sample as vector3D, the object id and the delay between last sample in milliseconds.
      */
@@ -61,7 +59,7 @@ class ObjectTrajectoryPredictor {
      * @brief
      *
      * This function predicts the position after given ms, using the interal stored samples.
-     * If given time is 0, it will return the previous prediction.
+     * If given time is 0, it will return the last inserted sample position.
      *
      * @param[in] objectId as int, ms as int
      * The time for next prediction needs to be the time since last added sample.
@@ -80,7 +78,6 @@ class ObjectTrajectoryPredictor {
      */
     Vector3D getSpeed(uint8_t objectId);
 
-
     /**
      * @brief
      *
@@ -89,8 +86,6 @@ class ObjectTrajectoryPredictor {
      * @param[in] objectId as int
      */
     void clearSamples(uint8_t objectId);
-  
-
 };
 
 #endif // OBJECTTRAJECTORYPREDICTOR_HPP
