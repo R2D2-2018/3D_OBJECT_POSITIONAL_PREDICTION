@@ -1,5 +1,4 @@
 #include "object_trajectory_predictor.hpp"
-#include "wrap-hwlib.hpp"
 
 ObjectTrajectoryPredictor::ObjectTrajectoryPredictor() {
     for (int i = 0; i < 10; ++i) {
