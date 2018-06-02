@@ -22,10 +22,12 @@ Vector3D ObjectTrajectoryPredictor::calculatePositionAfterMs(Vector3D position, 
 }
 
 void ObjectTrajectoryPredictor::addSample(Vector3D newPosition, uint8_t objectId, uint32_t delayMs) {
-    objectSampleData[objectId].addSample(newPosition, delayMs);
+    if (objectId < objectSampleData.size()) {
+        objectSampleData[objectId].addSample(newPosition, delayMs);
 
-    objectSampleData[objectId].setSpeed(
-        calculateSpeed(objectSampleData[objectId].getPosition(1), objectSampleData[objectId].getPosition(0), delayMs));
+        objectSampleData[objectId].setSpeed(
+            calculateSpeed(objectSampleData[objectId].getPosition(1), objectSampleData[objectId].getPosition(0), delayMs));
+    }
 }
 
 Vector3D ObjectTrajectoryPredictor::predictPosition(uint8_t objectId, uint32_t ms) {
