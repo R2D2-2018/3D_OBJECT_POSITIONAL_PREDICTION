@@ -23,17 +23,21 @@ class ObjectTrajectoryPredictor {
      *
      * This function calculates the average speed between two positions.
      *
-     * @param[in] Two Vector3D positions and the time difference in ms which is > 0.
+     * @param[in] position_1 : first position.
+     * @param[in] position_2 : second position.
+     * @param[in] timeMs : the time difference in ms which is > 0.
      * @return The average speed of the object between the given positions.
      */
-    Vector3D calculateSpeed(const Vector3D &position_1, const Vector3D &position_2, const int32_t &time_ms);
+    Vector3D calculateSpeed(const Vector3D &position_1, const Vector3D &position_2, const int32_t &timeMs);
 
     /**
-     * @brief
+     * @brief returns a new position from the current position, speed and time.
      *
      * This function calculates the new position of the object after, by user given, milliseconds
      *
-     * @param[in] The current position of the object, the speed of this object, the amount of milliseconds
+     * @param[in] position : The current position of the object
+     * @param[in] speed : the speed of the object
+     * @param[in] ms : the amount of milliseconds to predict position for.
      * @return A vector object containing the new position of the object
      */
 
@@ -52,39 +56,42 @@ class ObjectTrajectoryPredictor {
      *  This method is assuming the sample size of the arrays is 10
      *
      *
-     * @param[in] a new sample as vector3D, the object id and the delay between last sample in milliseconds.
+     * @param[in] newPosition : a new sample as vector3D
+     * @param[in] objectId : the object id as integer
+     * @param[in] delayMs : the delay between last sample in milliseconds.
      */
     void addSample(Vector3D newPosition, uint8_t objectId, uint32_t delayMs);
 
     /**
-     * @brief
+     * @brief This method returns the predicted position over a given time.
      *
      * This function predicts the position after given ms, using the interal stored samples.
      * If given time is 0, it will return the last inserted sample position.
      *
-     * @param[in] objectId as int, ms as int
-     * The time for next prediction needs to be the time since last added sample.
+     *
+     * @param[in] objectId : the object id as integer
+     * @patarm[in] ms : difference in time between last sample and desired prediction.
      * @return A Vector3D containing the predicted position of the object
      */
     Vector3D predictPosition(uint8_t objectId, uint32_t ms);
 
     /**
-     * @brief
+     * @brief a getter for speed.
      *
      * This function returns the latest speed for the given objectID.
      *
-     * @param[in] objectId as int
-     * The time for next prediction needs to be the time since last added sample.
+     * @param[in] objectId : the object id as integer
+     *
      * @return A Vector3D as speed of the object.
      */
     Vector3D getSpeed(uint8_t objectId);
 
     /**
-     * @brief
+     * @brief clears internal samples.
      *
      * This function clears the stored samples for the given objectID
      *
-     * @param[in] objectId as int
+     * @param[in] objectId : the object id as integer
      */
     void clearSamples(uint8_t objectId);
 };
