@@ -1,7 +1,3 @@
-#ifndef VECTOR3D_HPP
-#define VECTOR3D_HPP
-#include <stdint.h>
-
 /**
  * @file
  * @brief     Vector3D is a datatype that represents a point in a 3D world.
@@ -10,6 +6,10 @@
  * @license   See LICENSE
  */
 
+#ifndef VECTOR3D_HPP
+#define VECTOR3D_HPP
+#include <stdint.h>
+
 class Vector3D {
   private:
     int32_t x;
@@ -17,9 +17,9 @@ class Vector3D {
     int32_t z;
 
   public:
-    Vector3D() : x(0), y(0), z(0){};
     Vector3D(int32_t xcoord, int32_t ycoord, int32_t zcoord) : x(xcoord), y(ycoord), z(zcoord){};
 
+    Vector3D() : x(0), y(0), z(0){};
     /**
      * @brief Getter method for x.
      *
