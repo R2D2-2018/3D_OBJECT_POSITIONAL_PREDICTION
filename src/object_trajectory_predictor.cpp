@@ -1,9 +1,6 @@
 #include "object_trajectory_predictor.hpp"
 
 ObjectTrajectoryPredictor::ObjectTrajectoryPredictor() {
-    for (unsigned int i = 0; i < measurementDelay.size(); ++i) {
-        measurementDelay[i] = 0;
-    }
 }
 
 Vector3D ObjectTrajectoryPredictor::calculateSpeed(const Vector3D &pos_1, const Vector3D &pos_2, const int32_t &timeMs) {
@@ -26,25 +23,21 @@ Vector3D ObjectTrajectoryPredictor::calculatePositionAfterMs(Vector3D position, 
 }
 
 void ObjectTrajectoryPredictor::addSample(Vector3D newPosition, uint8_t objectId, uint32_t delayMs) {
-    for (unsigned int i = positions.size() - 1; i > 0; --i) {
-        positions[i] = positions[i - 1];
-        measurementDelay[i] = measurementDelay[i - 1];
-    }
-    positions[0] = newPosition;
-    measurementDelay[0] = delayMs;
+    objectSampleData[objectId].addSample(newPosition, delayMs);
 
-    speed = calculateSpeed(positions[1], positions[0], delayMs);
+    objectSampleData[objectId].setSpeed(
+        calculateSpeed(objectSampleData[objectId].getPosition(1), objectSampleData[objectId].getPosition(0), delayMs));
 }
 
 Vector3D ObjectTrajectoryPredictor::predictPosition(uint8_t objectId, uint32_t ms) {
     if (ms != 0) {
-        return calculatePositionAfterMs(positions[0], speed, ms);
+        return calculatePositionAfterMs(objectSampleData[objectId].getPosition(0), objectSampleData[objectId].getSpeed(), ms);
     }
-    return positions[0];
+    return objectSampleData[objectId].getPosition(0);
 }
 
 Vector3D ObjectTrajectoryPredictor::getSpeed(uint8_t objectId) {
-    return speed;
+    return objectSampleData[objectId].getSpeed();
 }
 
 void ObjectTrajectoryPredictor::clearSamples(uint8_t objectId) {
