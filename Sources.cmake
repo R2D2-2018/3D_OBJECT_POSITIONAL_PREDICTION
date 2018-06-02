@@ -12,4 +12,5 @@ include_directories (${catch}/single_include)
 
 set (sources
     src/object_trajectory_predictor.cpp
+    src/object_data.cpp
 )
