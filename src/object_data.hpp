@@ -12,6 +12,14 @@ class ObjectData {
   public:
     ObjectData();
 
+    void addSample(Vector3D newPosition, uint32_t delayMs);
+
+    Vector3D getPosition(const int &index);
+
+    void setSpeed(const Vector3D &newSpeed);
+    Vector3D getSpeed();
+
+    void clearSamples();
 };
 
 #endif
