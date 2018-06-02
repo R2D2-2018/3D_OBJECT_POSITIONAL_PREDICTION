@@ -3,10 +3,6 @@
 #include "object_trajectory_predictor.hpp"
 #include "vector3d.hpp"
 
-TEST_CASE("Example Test Case") {
-    REQUIRE(10 == 10);
-}
-
 TEST_CASE("ObjectTrajectoryPredictor positionPrediction test cases") {
     auto testPredictor = ObjectTrajectoryPredictor();
     testPredictor.addSample(Vector3D(10, 2, 5), 0, 100);
