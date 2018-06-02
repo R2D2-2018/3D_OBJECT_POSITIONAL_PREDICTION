@@ -2,6 +2,7 @@
 #define OBJECTTRAJECTORYPREDICTOR_HPP
 
 #include "vector3d.hpp"
+#include <array>
 
 /**
  * @file
@@ -13,8 +14,8 @@
 
 class ObjectTrajectoryPredictor {
   private:
-    Vector3D positions[10];
-    int measurementDelay[10];
+    std::array<Vector3D, 10> positions;
+    std::array<int, 10> measurementDelay;
     Vector3D speed;
 
     /**
