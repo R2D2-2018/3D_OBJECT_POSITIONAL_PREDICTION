@@ -11,12 +11,13 @@ void ObjectData::addSample(Vector3D newPosition, uint32_t delayMs) {
         positions[i] = positions[i - 1];
         measurementDelay[i] = measurementDelay[i - 1];
     }
+
     positions[0] = newPosition;
     measurementDelay[0] = delayMs;
 }
 
 Vector3D ObjectData::getPosition(const uint32_t &index) {
-    if (index > positions.size()) {
+    if (index < positions.size()) {
         return positions[index];
     }
     return Vector3D();
