@@ -1,9 +1,3 @@
-#ifndef OBJECTTRAJECTORYPREDICTOR_HPP
-#define OBJECTTRAJECTORYPREDICTOR_HPP
-
-#include "vector3d.hpp"
-#include <array>
-
 /**
  * @file
  * @brief     This file contains the ObjectTrajectoryPredictor, it is the main class of the module ObjectPositionalPrediction.
@@ -11,6 +5,12 @@
  * @author    Max Beunk & Daniel van Vliet
  * @license   See LICENSE
  */
+
+#ifndef OBJECTTRAJECTORYPREDICTOR_HPP
+#define OBJECTTRAJECTORYPREDICTOR_HPP
+
+#include "vector3d.hpp"
+#include <array>
 
 class ObjectTrajectoryPredictor {
   private:
