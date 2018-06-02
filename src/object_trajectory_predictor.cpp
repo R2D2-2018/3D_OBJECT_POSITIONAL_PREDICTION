@@ -1,7 +1,7 @@
 #include "object_trajectory_predictor.hpp"
 
 ObjectTrajectoryPredictor::ObjectTrajectoryPredictor() {
-    for (int i = 0; i < 10; ++i) {
+    for (unsigned int i = 0; i < measurementDelay.size(); ++i) {
         measurementDelay[i] = 0;
     }
 }
@@ -26,7 +26,7 @@ Vector3D ObjectTrajectoryPredictor::calculatePositionAfterMs(Vector3D position, 
 }
 
 void ObjectTrajectoryPredictor::addSample(Vector3D newPosition, uint8_t objectId, uint32_t delayMs) {
-    for (unsigned int i = 9; i > 0; --i) {
+    for (unsigned int i = positions.size() - 1; i > 0; --i) {
         positions[i] = positions[i - 1];
         measurementDelay[i] = measurementDelay[i - 1];
     }
