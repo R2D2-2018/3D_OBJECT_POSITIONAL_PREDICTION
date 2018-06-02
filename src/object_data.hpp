@@ -14,7 +14,7 @@ class ObjectData {
 
     void addSample(Vector3D newPosition, uint32_t delayMs);
 
-    Vector3D getPosition(const int &index);
+    Vector3D getPosition(const uint8_t &index);
 
     void setSpeed(const Vector3D &newSpeed);
     Vector3D getSpeed();
