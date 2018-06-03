@@ -11,10 +11,10 @@ TEST_CASE("ObjectTrajectoryPredictor positionPrediction test cases") {
 
     testPredictor.addSample(Vector3D(15, 5, 9), 0, 50);
     REQUIRE(testPredictor.predictPosition(0, 0) == Vector3D(15, 5, 9));
-    REQUIRE(testPredictor.predictPosition(0, 200) == Vector3D(35, 9, 19));
+    REQUIRE(testPredictor.predictPosition(0, 200) == Vector3D(35, 25, 31));
 
     testPredictor.addSample(Vector3D(23, 7, 15), 0, 50);
-    REQUIRE(testPredictor.predictPosition(0, 1000) == Vector3D(243, 27, 175))
+    REQUIRE(testPredictor.predictPosition(0, 1000) == Vector3D(243, 27, 175));
 }
 
 TEST_CASE("ObjectTrajectoryPredictor speed test cases") {

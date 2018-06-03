@@ -54,6 +54,6 @@ void ObjectTrajectoryPredictor::clearSamples(uint8_t objectId) {
 }
 
 Vector3D ObjectTrajectoryPredictor::calculateAcceleration(uint8_t objectId) {
-    objectSampleData[objectId].setAcceleration(objectSampleData[objectId].getSpeed(1) - objectSampleData[objectId].getSpeed(0));
+    objectSampleData[objectId].setAcceleration(objectSampleData[objectId].getSpeed(0) - objectSampleData[objectId].getSpeed(1));
     return objectSampleData[objectId].getAcceleration();
 }
