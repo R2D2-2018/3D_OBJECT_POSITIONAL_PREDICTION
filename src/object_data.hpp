@@ -14,7 +14,8 @@ class ObjectData {
   private:
     std::array<Vector3D, 10> positions;
     std::array<int, 10> measurementDelay;
-    Vector3D speed;
+    std::array<Vector3D, 10> speed;
+    Vector3D acceleration;
 
   public:
     ObjectData();
@@ -59,7 +60,7 @@ class ObjectData {
      * This method returns the speed.
      * @return A Vector3D as speed of the object.
      */
-    Vector3D getSpeed();
+    Vector3D getSpeed(uint32_t index);
 
     /**
      * @brief clears internal samples.
@@ -68,6 +69,22 @@ class ObjectData {
      * and Vector3Ds to Vector3D(0,0,0).
      */
     void clearSamples();
+
+    /**
+     * @brief a setter for acceleration
+     *
+     * This method sets the acceleration to a new value.
+     * @param[in] newAcceleration : the new acceleration as Vector3D
+     */
+    void setAcceleration(Vector3D newAcceleration);
+
+    /**
+     * @brief a getter for acceleration
+     *
+     * This method returns the acceleration
+     * @return A Vector3D as the acceleration of the object
+     */
+    Vector3D getAcceleration();
 };
 
 #endif

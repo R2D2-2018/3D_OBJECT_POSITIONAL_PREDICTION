@@ -37,10 +37,20 @@ class ObjectTrajectoryPredictor {
      * @param[in] position : The current position of the object
      * @param[in] speed : the speed of the object
      * @param[in] ms : the amount of milliseconds to predict position for.
+     * @param[in] acceleration : the acceleration of the object as Vector3D
      * @return A vector object containing the new position of the object
      */
 
-    Vector3D calculatePositionAfterMs(Vector3D position, Vector3D speed, uint32_t ms);
+    Vector3D calculatePositionAfterMs(Vector3D position, Vector3D speed, uint32_t ms, Vector3D acceleration);
+
+    /**
+     * @brief calculates the acceleration of the object
+     *
+     * This function calculates the acceleration of the asked object
+     *
+     * @param[in] objectId : the object id as integer
+     */
+    Vector3D calculateAcceleration(uint8_t objectId);
 
   public:
     ObjectTrajectoryPredictor();

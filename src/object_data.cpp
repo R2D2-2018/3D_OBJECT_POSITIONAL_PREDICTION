@@ -23,13 +23,24 @@ Vector3D ObjectData::getPosition(const uint32_t &index) {
     return Vector3D();
 }
 
-Vector3D ObjectData::getSpeed() {
-    return speed;
+Vector3D ObjectData::getSpeed(uint32_t index) {
+    return speed[index];
 }
 
 void ObjectData::setSpeed(const Vector3D &newSpeed) {
-    speed = newSpeed;
+    for (unsigned int i = speed.size() - 1; i > 0; --i) {
+        speed[i] = speed[i - 1];
+    }
+    speed[0] = newSpeed;
 }
 
 void ObjectData::clearSamples() {
+}
+
+void ObjectData::setAcceleration(Vector3D newAcceleration) {
+    acceleration = newAcceleration;
+}
+
+Vector3D ObjectData::getAcceleration() {
+    return acceleration;
 }
