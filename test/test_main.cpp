@@ -28,6 +28,25 @@ TEST_CASE("ObjectTrajectoryPredictor speed test cases") {
     REQUIRE(testPredictor.getSpeed(0) == Vector3D(40, 20, 8));
 }
 
+TEST_CASE("ObjectTrajectoryPredictor multiple objects testing") {
+    auto testPredictor = ObjectTrajectoryPredictor();
+    testPredictor.addSample(Vector3D(10, 30, 40), 1, 1000);
+    testPredictor.addSample(Vector3D(20, 70, 60), 2, 1000);
+    REQUIRE(testPredictor.getSpeed(0) == Vector3D(0, 0, 0));
+    REQUIRE(testPredictor.getSpeed(1) == Vector3D(10, 30, 40));
+    REQUIRE(testPredictor.getSpeed(2) == Vector3D(20, 70, 60));
+
+    REQUIRE(testPredictor.predictPosition(0, 100) == Vector3D(0, 0, 0));
+    REQUIRE(testPredictor.predictPosition(1, 100) == Vector3D(11, 33, 44));
+    REQUIRE(testPredictor.predictPosition(2, 100) == Vector3D(22, 77, 66));
+
+    testPredictor = ObjectTrajectoryPredictor();
+    testPredictor.addSample(Vector3D(20, 10, 10), 3, 1000);
+    REQUIRE(testPredictor.getSpeed(0) == Vector3D(0, 0, 0));
+    REQUIRE(testPredictor.getSpeed(1) == Vector3D(0, 0, 0));
+    REQUIRE(testPredictor.getSpeed(2) == Vector3D(0, 0, 0));
+}
+
 TEST_CASE("Vector3D operator== and operator !=") {
     auto vector_1 = Vector3D(1, 2, 3);
     auto vector_2 = Vector3D(1, 2, 3);

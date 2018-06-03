@@ -9,14 +9,13 @@
 #ifndef OBJECTTRAJECTORYPREDICTOR_HPP
 #define OBJECTTRAJECTORYPREDICTOR_HPP
 
+#include "object_data.hpp"
 #include "vector3d.hpp"
 #include <array>
 
 class ObjectTrajectoryPredictor {
   private:
-    std::array<Vector3D, 10> positions;
-    std::array<int, 10> measurementDelay;
-    Vector3D speed;
+    std::array<ObjectData, 3> objectSampleData;
 
     /**
      * @brief
