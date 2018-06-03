@@ -7,7 +7,7 @@ TEST_CASE("ObjectTrajectoryPredictor positionPrediction test cases") {
     auto testPredictor = ObjectTrajectoryPredictor();
     testPredictor.addSample(Vector3D(10, 2, 5), 0, 100);
     REQUIRE(testPredictor.predictPosition(0, 0) == Vector3D(10, 2, 5));
-    REQUIRE(testPredictor.predictPosition(0, 900) == Vector3D(10, 2, 5));
+    REQUIRE(testPredictor.predictPosition(0, 900) == Vector3D(190, 38, 95));
 
     testPredictor.addSample(Vector3D(15, 5, 9), 0, 50);
     REQUIRE(testPredictor.predictPosition(0, 0) == Vector3D(15, 5, 9));
