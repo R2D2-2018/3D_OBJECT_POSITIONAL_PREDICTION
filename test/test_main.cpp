@@ -40,8 +40,8 @@ TEST_CASE("ObjectTrajectoryPredictor multiple objects testing") {
     REQUIRE(testPredictor.getSpeed(2) == Vector3D(20, 70, 60));
 
     REQUIRE(testPredictor.predictPosition(0, 100) == Vector3D(0, 0, 0));
-    REQUIRE(testPredictor.predictPosition(1, 100) == Vector3D(10, 30, 40));
-    REQUIRE(testPredictor.predictPosition(2, 100) == Vector3D(20, 70, 60));
+    REQUIRE(testPredictor.predictPosition(1, 100) == Vector3D(12, 36, 48));
+    REQUIRE(testPredictor.predictPosition(2, 100) == Vector3D(24, 84, 72));
 
     testPredictor = ObjectTrajectoryPredictor();
     testPredictor.addSample(Vector3D(20, 10, 10), 3, 1000);
