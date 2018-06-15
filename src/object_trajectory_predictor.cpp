@@ -51,8 +51,7 @@ Vector3D ObjectTrajectoryPredictor::getSpeed(uint8_t objectId) {
 }
 
 void ObjectTrajectoryPredictor::clearSamples(uint8_t objectId) {
-    if (objectId < 3)
-    {
+    if (objectId < 3) {
         objectSampleData[objectId].clearSamples();
     }
 }
