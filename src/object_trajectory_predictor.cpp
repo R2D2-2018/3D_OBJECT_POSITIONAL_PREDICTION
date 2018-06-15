@@ -51,6 +51,7 @@ Vector3D ObjectTrajectoryPredictor::getSpeed(uint8_t objectId) {
 }
 
 void ObjectTrajectoryPredictor::clearSamples(uint8_t objectId) {
+    objectSampleData[objectId] = ObjectData();
 }
 
 Vector3D ObjectTrajectoryPredictor::calculateAcceleration(uint8_t objectId) {
