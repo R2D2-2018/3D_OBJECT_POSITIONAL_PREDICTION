@@ -17,6 +17,16 @@ TEST_CASE("ObjectTrajectoryPredictor positionPrediction test cases") {
     REQUIRE(testPredictor.predictPosition(0, 1000) == Vector3D(243, 27, 175));
 }
 
+TEST_CASE("ObjectTrajectoryPredictor clearSamples") {
+    auto testPredictor = ObjectTrajectoryPredictor();
+    testPredictor.addSample(Vector3D(10, 2, 5), 0, 1000);
+    REQUIRE(testPredictor.getSpeed(0) == Vector3D(10, 2, 5));
+    testPredictor.addSample(Vector3D(15, 2, 5), 0, 1000);
+    REQUIRE(testPredictor.getSpeed(0) == Vector3D(5, 0, 0));
+    testPredictor.clearSamples(0);
+    REQUIRE(testPredictor.getSpeed(0) == Vector3D(0, 0, 0));
+}
+
 TEST_CASE("ObjectTrajectoryPredictor speed test cases") {
     auto testPredictor = ObjectTrajectoryPredictor();
     REQUIRE(testPredictor.getSpeed(0) == Vector3D());
