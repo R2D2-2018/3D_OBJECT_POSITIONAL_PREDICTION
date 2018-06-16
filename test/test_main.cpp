@@ -50,12 +50,11 @@ TEST_CASE("ObjectTrajectoryPredictor multiple objects testing") {
     REQUIRE(testPredictor.getSpeed(2) == Vector3D(0, 0, 0));
 }
 
-TEST_CASE("ObjectTrajectoryPredictor predictPositionCurved")
-{
+TEST_CASE("ObjectTrajectoryPredictor predictPositionCurved") {
     auto testPredictor = ObjectTrajectoryPredictor();
 
     testPredictor.addSample(Vector3D(10, 8, 0), 0, 1000);
-	testPredictor.addSample(Vector3D(15, 17, 2), 0, 1000);
+    testPredictor.addSample(Vector3D(15, 17, 2), 0, 1000);
 
     auto prediction = testPredictor.predictPositionCurved(0, 1000);
     REQUIRE(prediction.getX() == 17);
