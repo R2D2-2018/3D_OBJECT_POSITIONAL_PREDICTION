@@ -101,9 +101,7 @@ class ObjectTrajectoryPredictor {
      */
     Vector3D predictPosition(uint8_t objectId, uint32_t ms);
 
-
-
-     /**
+    /**
      * @brief This method returns the predicted position over a given time.
      *
      * This function predicts the position after given ms, using the interal stored samples.
