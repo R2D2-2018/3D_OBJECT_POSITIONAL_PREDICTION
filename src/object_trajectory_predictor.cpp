@@ -15,9 +15,9 @@ Vector3D ObjectTrajectoryPredictor::calculateSpeed(const Vector3D &pos_1, const 
 Vector3D ObjectTrajectoryPredictor::calculatePositionAfterMs(Vector3D position, Vector3D speed, uint32_t ms,
                                                              Vector3D acceleration) {
     int x, y, z;
-    x = position.getX() + (((speed.getX() + acceleration.getX()) * ms) / 1000);
-    y = position.getY() + (((speed.getY() + acceleration.getY()) * ms) / 1000);
-    z = position.getZ() + (((speed.getZ() + acceleration.getZ()) * ms) / 1000);
+    x = position.getX() + (((speed.getX() + acceleration.getX()) * int(ms)) / 1000);
+    y = position.getY() + (((speed.getY() + acceleration.getY()) * int(ms)) / 1000);
+    z = position.getZ() + (((speed.getZ() + acceleration.getZ()) * int(ms)) / 1000);
     Vector3D newLocation = Vector3D(x, y, z);
     return newLocation;
 }
