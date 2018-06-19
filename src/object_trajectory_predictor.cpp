@@ -12,16 +12,6 @@ Vector3D ObjectTrajectoryPredictor::calculateSpeed(const Vector3D &pos_1, const 
     }
 }
 
-Vector3D ObjectTrajectoryPredictor::calculatePositionAfterMs(Vector3D position, Vector3D speed, uint32_t ms,
-                                                             Vector3D acceleration) {
-    int x, y, z;
-    x = position.getX() + (((speed.getX() + acceleration.getX()) * int(ms)) / 1000);
-    y = position.getY() + (((speed.getY() + acceleration.getY()) * int(ms)) / 1000);
-    z = position.getZ() + (((speed.getZ() + acceleration.getZ()) * int(ms)) / 1000);
-    Vector3D newLocation = Vector3D(x, y, z);
-    return newLocation;
-}
-
 Vector3D ObjectTrajectoryPredictor::calculatePositionCurvedAfterMs(Vector3D position, Vector3D speed, uint32_t ms,
                                                                    Vector3D acceleration) {
     int x, y, z;
@@ -39,18 +29,6 @@ void ObjectTrajectoryPredictor::addSample(Vector3D newPosition, uint8_t objectId
         objectSampleData[objectId].setSpeed(
             calculateSpeed(objectSampleData[objectId].getPosition(1), objectSampleData[objectId].getPosition(0), delayMs));
     }
-}
-
-Vector3D ObjectTrajectoryPredictor::predictPosition(uint8_t objectId, uint32_t ms) {
-    if (objectId < objectSampleData.size()) {
-        if (ms != 0) {
-            Vector3D acceleration = calculateAcceleration(objectId);
-            return calculatePositionAfterMs(objectSampleData[objectId].getPosition(0), objectSampleData[objectId].getSpeed(0), ms,
-                                            acceleration);
-        }
-        return objectSampleData[objectId].getPosition(0);
-    }
-    return Vector3D();
 }
 
 Vector3D ObjectTrajectoryPredictor::predictPositionCurved(uint8_t objectId, uint32_t ms) {
