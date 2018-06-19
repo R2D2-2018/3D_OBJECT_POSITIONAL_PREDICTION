@@ -44,7 +44,7 @@ class ObjectTrajectoryPredictor {
      * @return A vector object containing the new position of the object
      */
 
-    Vector3D calculatePositionCurvedAfterMs(Vector3D position, Vector3D speed, uint32_t ms, Vector3D acceleration);
+    Vector3D calculatePositionAfterMs(Vector3D position, Vector3D speed, uint32_t ms, Vector3D acceleration);
 
     /**
      * @brief calculates the acceleration of the object
@@ -86,7 +86,7 @@ class ObjectTrajectoryPredictor {
      * @patarm[in] ms : difference in time between last sample and desired prediction.
      * @return A Vector3D containing the predicted position of the object
      */
-    Vector3D predictPositionCurved(uint8_t objectId, uint32_t ms);
+    Vector3D predictPosition(uint8_t objectId, uint32_t ms);
 
     /**
      * @brief a getter for speed.
