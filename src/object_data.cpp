@@ -1,6 +1,8 @@
 #include "object_data.hpp"
 
-ObjectData::ObjectData() {
+ObjectData::ObjectData():
+    numberOfSamples(0)
+    {
     for (unsigned int i = 0; i < measurementDelay.size(); ++i) {
         measurementDelay[i] = 0;
     }
@@ -14,6 +16,7 @@ void ObjectData::addSample(Vector3D newPosition, uint32_t delayMs) {
 
     positions[0] = newPosition;
     measurementDelay[0] = delayMs;
+    numberOfSamples++;
 }
 
 Vector3D ObjectData::getPosition(const uint32_t &index) {
@@ -41,6 +44,7 @@ void ObjectData::clearSamples() {
         speed[i] = Vector3D();
     }
     acceleration = Vector3D();
+    numberOfSamples = 0;
 }
 
 void ObjectData::setAcceleration(Vector3D newAcceleration) {
@@ -49,4 +53,9 @@ void ObjectData::setAcceleration(Vector3D newAcceleration) {
 
 Vector3D ObjectData::getAcceleration() {
     return acceleration;
+}
+
+uint8_t ObjectData::size()
+{
+    return numberOfSamples;
 }

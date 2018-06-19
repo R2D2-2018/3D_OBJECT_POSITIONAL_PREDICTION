@@ -43,24 +43,30 @@ void ObjectTrajectoryPredictor::addSample(Vector3D newPosition, uint8_t objectId
 
 Vector3D ObjectTrajectoryPredictor::predictPosition(uint8_t objectId, uint32_t ms) {
     if (objectId < objectSampleData.size()) {
-        if (ms != 0) {
+        if (objectSampleData[objectId].size() >= 3)
+        {
+            if (ms != 0) {
             Vector3D acceleration = calculateAcceleration(objectId);
             return calculatePositionAfterMs(objectSampleData[objectId].getPosition(0), objectSampleData[objectId].getSpeed(0), ms,
                                             acceleration);
         }
         return objectSampleData[objectId].getPosition(0);
+        }
     }
     return Vector3D();
 }
 
 Vector3D ObjectTrajectoryPredictor::predictPositionCurved(uint8_t objectId, uint32_t ms) {
     if (objectId < objectSampleData.size()) {
-        if (ms != 0) {
+        if (objectSampleData[objectId].size() >= 3)
+        {
+            if (ms != 0) {
             Vector3D acceleration = calculateAcceleration(objectId);
             return calculatePositionCurvedAfterMs(objectSampleData[objectId].getPosition(0), objectSampleData[objectId].getSpeed(0),
                                                   ms, acceleration);
         }
         return objectSampleData[objectId].getPosition(0);
+        }
     }
     return Vector3D();
 }
