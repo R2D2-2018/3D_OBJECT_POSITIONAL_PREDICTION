@@ -1,8 +1,6 @@
 #include "object_data.hpp"
 
-ObjectData::ObjectData():
-    numberOfSamples(0)
-    {
+ObjectData::ObjectData() : numberOfSamples(0) {
     for (unsigned int i = 0; i < measurementDelay.size(); ++i) {
         measurementDelay[i] = 0;
     }
@@ -55,7 +53,6 @@ Vector3D ObjectData::getAcceleration() {
     return acceleration;
 }
 
-uint8_t ObjectData::size()
-{
+uint8_t ObjectData::size() {
     return numberOfSamples;
 }
