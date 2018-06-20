@@ -36,7 +36,7 @@ void ObjectData::setSpeed(const Vector3D &newSpeed) {
 }
 
 void ObjectData::clearSamples() {
-    for (int i = 0; i < positions.size(); ++i) {
+    for (unsigned int i = 0; i < positions.size(); ++i) {
         positions[i] = Vector3D();
         measurementDelay[i] = 0;
         speed[i] = Vector3D();
