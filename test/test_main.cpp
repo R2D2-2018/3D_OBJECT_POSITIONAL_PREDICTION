@@ -9,20 +9,21 @@ TEST_CASE("ObjectTrajectoryPredictor positionPrediction test cases") {
     testPredictor.addSample(Vector3D(0, 0, 0), 0, 0);
     testPredictor.addSample(Vector3D(10, 2, 5), 0, 100);
     REQUIRE(testPredictor.predictPosition(0, 0) == Vector3D(10, 2, 5));
-    REQUIRE(testPredictor.predictPosition(0, 900) == Vector3D(190, 38, 95));
+    REQUIRE(testPredictor.predictPosition(0, 900) == Vector3D(110, 22, 55));
 
     testPredictor.addSample(Vector3D(15, 5, 9), 0, 50);
     REQUIRE(testPredictor.predictPosition(0, 0) == Vector3D(15, 5, 9));
-    REQUIRE(testPredictor.predictPosition(0, 200) == Vector3D(35, 25, 31));
+    REQUIRE(testPredictor.predictPosition(0, 200) == Vector3D(115, 65, 89));
 
     testPredictor.addSample(Vector3D(23, 7, 15), 0, 50);
-    REQUIRE(testPredictor.predictPosition(0, 1000) == Vector3D(243, 27, 175));
+    REQUIRE(testPredictor.predictPosition(0, 1000) == Vector3D(213, 37, 155));
 
     testPredictor = ObjectTrajectoryPredictor();
     testPredictor.addSample(Vector3D(12, 12, 12), 0, 100);
-    REQUIRE(testPredictor.predictPositionCurved(0, 100) == Vector3D());
+    REQUIRE(testPredictor.predictPosition(0, 100) == Vector3D());
     testPredictor.addSample(Vector3D(12, 12, 12), 0, 100);
-    REQUIRE(testPredictor.predictPositionCurved(0, 100) == Vector3D());
+    REQUIRE(testPredictor.predictPosition(0, 100) == Vector3D());
+    REQUIRE(testPredictor.predictPosition(0, 1000) == Vector3D());
 }
 
 TEST_CASE("ObjectTrajectoryPredictor clearSamples") {
@@ -66,8 +67,8 @@ TEST_CASE("ObjectTrajectoryPredictor multiple objects testing") {
     REQUIRE(testPredictor.getSpeed(2) == Vector3D(20, 70, 60));
 
     REQUIRE(testPredictor.predictPosition(0, 100) == Vector3D(0, 0, 0));
-    REQUIRE(testPredictor.predictPosition(1, 100) == Vector3D(12, 36, 48));
-    REQUIRE(testPredictor.predictPosition(2, 100) == Vector3D(24, 84, 72));
+    REQUIRE(testPredictor.predictPosition(1, 100) == Vector3D(20, 60, 80));
+    REQUIRE(testPredictor.predictPosition(2, 100) == Vector3D(40, 140, 120));
 
     testPredictor = ObjectTrajectoryPredictor();
     testPredictor.addSample(Vector3D(0, 0, 0), 3, 0);
@@ -78,29 +79,29 @@ TEST_CASE("ObjectTrajectoryPredictor multiple objects testing") {
     REQUIRE(testPredictor.getSpeed(2) == Vector3D(0, 0, 0));
 }
 
-TEST_CASE("ObjectTrajectoryPredictor predictPositionCurved") {
+TEST_CASE("ObjectTrajectoryPredictor predictPosition") {
     auto testPredictor = ObjectTrajectoryPredictor();
 
     testPredictor.addSample(Vector3D(0, 0, 0), 0, 0);
     testPredictor.addSample(Vector3D(10, 8, 0), 0, 1000);
     testPredictor.addSample(Vector3D(15, 17, 2), 0, 1000);
 
-    auto prediction = testPredictor.predictPositionCurved(0, 1000);
+    auto prediction = testPredictor.predictPosition(0, 1000);
     REQUIRE(prediction.getX() == 17);
     REQUIRE(prediction.getY() == 26);
     REQUIRE(prediction.getZ() == 5);
 
-    prediction = testPredictor.predictPositionCurved(0, 2000);
+    prediction = testPredictor.predictPosition(0, 2000);
     REQUIRE(prediction.getX() == 10);
     REQUIRE(prediction.getY() == 28);
     REQUIRE(prediction.getZ() == 8);
 
-    prediction = testPredictor.predictPositionCurved(0, 3000);
+    prediction = testPredictor.predictPosition(0, 3000);
     REQUIRE(prediction.getX() == -2);
     REQUIRE(prediction.getY() == 30);
     REQUIRE(prediction.getZ() == 13);
 
-    prediction = testPredictor.predictPositionCurved(0, 4000);
+    prediction = testPredictor.predictPosition(0, 4000);
     REQUIRE(prediction.getX() == -20);
     REQUIRE(prediction.getY() == 34);
     REQUIRE(prediction.getZ() == 20);

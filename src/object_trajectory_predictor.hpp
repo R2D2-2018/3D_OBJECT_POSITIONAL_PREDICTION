@@ -33,20 +33,6 @@ class ObjectTrajectoryPredictor {
     /**
      * @brief returns a new position from the current position, speed and time.
      *
-     * This function calculates the new position of the object after, by user given, milliseconds
-     *
-     * @param[in] position : The current position of the object
-     * @param[in] speed : the speed of the object
-     * @param[in] ms : the amount of milliseconds to predict position for.
-     * @param[in] acceleration : the acceleration of the object as Vector3D
-     * @return A vector object containing the new position of the object
-     */
-
-    Vector3D calculatePositionAfterMs(Vector3D position, Vector3D speed, uint32_t ms, Vector3D acceleration);
-
-    /**
-     * @brief returns a new position from the current position, speed and time.
-     *
      * This function calculates the new position of the object. The method takes
      * the previous path of the object into account when predicting, so it is
      * able to predict the new position much more accurately.
@@ -58,7 +44,7 @@ class ObjectTrajectoryPredictor {
      * @return A vector object containing the new position of the object
      */
 
-    Vector3D calculatePositionCurvedAfterMs(Vector3D position, Vector3D speed, uint32_t ms, Vector3D acceleration);
+    Vector3D calculatePositionAfterMs(Vector3D position, Vector3D speed, uint32_t ms, Vector3D acceleration);
 
     /**
      * @brief calculates the acceleration of the object
@@ -93,19 +79,6 @@ class ObjectTrajectoryPredictor {
      *
      * This function predicts the position after given ms, using the interal stored samples.
      * If given time is 0, it will return the last inserted sample position.
-     *
-     *
-     * @param[in] objectId : the object id as integer
-     * @patarm[in] ms : difference in time between last sample and desired prediction.
-     * @return A Vector3D containing the predicted position of the object
-     */
-    Vector3D predictPosition(uint8_t objectId, uint32_t ms);
-
-    /**
-     * @brief This method returns the predicted position over a given time.
-     *
-     * This function predicts the position after given ms, using the interal stored samples.
-     * If given time is 0, it will return the last inserted sample position.
      * The method takes the previous path of the object into account when predicting, so it is
      * able to predict the new position much more accurately.
      *
@@ -113,7 +86,7 @@ class ObjectTrajectoryPredictor {
      * @patarm[in] ms : difference in time between last sample and desired prediction.
      * @return A Vector3D containing the predicted position of the object
      */
-    Vector3D predictPositionCurved(uint8_t objectId, uint32_t ms);
+    Vector3D predictPosition(uint8_t objectId, uint32_t ms);
 
     /**
      * @brief a getter for speed.
