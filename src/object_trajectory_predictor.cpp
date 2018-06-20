@@ -13,7 +13,7 @@ Vector3D ObjectTrajectoryPredictor::calculateSpeed(const Vector3D &pos_1, const 
 }
 
 Vector3D ObjectTrajectoryPredictor::calculatePositionAfterMs(Vector3D position, Vector3D speed, uint32_t ms,
-                                                                   Vector3D acceleration) {
+                                                             Vector3D acceleration) {
     int x, y, z;
     x = position.getX() + speed.getX() + 0.5 * acceleration.getX() * pow(int(ms) / 1000, 2);
     y = position.getY() + speed.getY() + 0.5 * acceleration.getY() * pow(int(ms) / 1000, 2);
@@ -35,8 +35,8 @@ Vector3D ObjectTrajectoryPredictor::predictPosition(uint8_t objectId, uint32_t m
     if (objectId < objectSampleData.size()) {
         if (ms != 0) {
             Vector3D acceleration = calculateAcceleration(objectId);
-            return calculatePositionAfterMs(objectSampleData[objectId].getPosition(0), objectSampleData[objectId].getSpeed(0),
-                                                  ms, acceleration);
+            return calculatePositionAfterMs(objectSampleData[objectId].getPosition(0), objectSampleData[objectId].getSpeed(0), ms,
+                                            acceleration);
         }
         return objectSampleData[objectId].getPosition(0);
     }
