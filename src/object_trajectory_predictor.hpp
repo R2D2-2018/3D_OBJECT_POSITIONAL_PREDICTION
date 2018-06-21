@@ -114,12 +114,16 @@ class ObjectTrajectoryPredictor {
      */
     Vector3D predictPosition(uint8_t objectId, uint32_t ms) {
         if (objectId < objectSampleData.size()) {
+          if (objectSampleData[objectId].size() >= 3)
+          {
             if (ms != 0) {
                 Vector3D acceleration = calculateAcceleration(objectId);
                 return calculatePositionAfterMs(objectSampleData[objectId].getPosition(0), objectSampleData[objectId].getSpeed(0),
                                                 ms, acceleration);
             }
             return objectSampleData[objectId].getPosition(0);
+
+          }
         }
         return Vector3D();
     }
