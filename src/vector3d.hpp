@@ -10,8 +10,7 @@
 #define VECTOR3D_HPP
 #include <stdint.h>
 
-namespace PositionPrediction
-{
+namespace PositionPrediction {
 class Vector3D {
   private:
     int32_t x;
@@ -211,6 +210,6 @@ class Vector3D {
         return Vector3D();
     }
 };
-}
+} // namespace PositionPrediction
 
 #endif // VECTOR3D_HPP

@@ -10,7 +10,7 @@
 #include "vector3d.hpp"
 #include <array>
 
-namespace PositionPrediction{
+namespace PositionPrediction {
 class ObjectData {
   private:
     std::array<Vector3D, 3> positions;
@@ -95,8 +95,6 @@ class ObjectData {
      */
     uint8_t size();
 };
-}
-
-
+} // namespace PositionPrediction
 
 #endif

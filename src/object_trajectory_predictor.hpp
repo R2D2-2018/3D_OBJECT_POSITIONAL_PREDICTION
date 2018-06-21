@@ -14,7 +14,7 @@
 #include <array>
 #include <math.h>
 
-namespace PositionPrediction{
+namespace PositionPrediction {
 template <int N>
 class ObjectTrajectoryPredictor {
   private:
@@ -114,16 +114,14 @@ class ObjectTrajectoryPredictor {
      */
     Vector3D predictPosition(uint8_t objectId, uint32_t ms) {
         if (objectId < objectSampleData.size()) {
-          if (objectSampleData[objectId].size() >= 3)
-          {
-            if (ms != 0) {
-                Vector3D acceleration = calculateAcceleration(objectId);
-                return calculatePositionAfterMs(objectSampleData[objectId].getPosition(0), objectSampleData[objectId].getSpeed(0),
-                                                ms, acceleration);
+            if (objectSampleData[objectId].size() >= 3) {
+                if (ms != 0) {
+                    Vector3D acceleration = calculateAcceleration(objectId);
+                    return calculatePositionAfterMs(objectSampleData[objectId].getPosition(0),
+                                                    objectSampleData[objectId].getSpeed(0), ms, acceleration);
+                }
+                return objectSampleData[objectId].getPosition(0);
             }
-            return objectSampleData[objectId].getPosition(0);
-
-          }
         }
         return Vector3D();
     }
@@ -157,8 +155,6 @@ class ObjectTrajectoryPredictor {
         }
     }
 };
-}
-
-
+} // namespace PositionPrediction
 
 #endif // OBJECTTRAJECTORYPREDICTOR_HPP
