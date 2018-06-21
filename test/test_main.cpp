@@ -36,6 +36,8 @@ TEST_CASE("ObjectTrajectoryPredictor clearSamples") {
     REQUIRE(testPredictor.getSpeed(0) == PositionPrediction::Vector3D(5, 0, 0));
     testPredictor.clearSamples(0);
     REQUIRE(testPredictor.getSpeed(0) == PositionPrediction::Vector3D(0, 0, 0));
+    testPredictor.addSample(PositionPrediction::Vector3D(12, 12, 12), 0, 100);
+    REQUIRE(testPredictor.predictPosition(0, 100) == PositionPrediction::Vector3D());
 }
 
 TEST_CASE("ObjectTrajectoryPredictor speed test cases") {
