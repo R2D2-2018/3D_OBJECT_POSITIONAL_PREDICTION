@@ -16,6 +16,7 @@ class ObjectData {
     std::array<int, 10> measurementDelay;
     std::array<Vector3D, 10> speed;
     Vector3D acceleration;
+    uint8_t numberOfSamples;
 
   public:
     ObjectData();
@@ -85,6 +86,8 @@ class ObjectData {
      * @return A Vector3D as the acceleration of the object
      */
     Vector3D getAcceleration();
+
+    uint8_t size();
 };
 
 #endif
