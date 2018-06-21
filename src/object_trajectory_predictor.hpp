@@ -2,7 +2,7 @@
  * @file
  * @brief     This file contains the ObjectTrajectoryPredictor, it is the main class of the module ObjectPositionalPrediction.
  *
- * @author    Max Beunk & Daniel van Vliet
+ * @author    Max Beunk, Daniel van Vliet & Bendeguz Toth
  * @license   See LICENSE
  */
 

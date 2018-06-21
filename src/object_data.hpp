@@ -1,7 +1,7 @@
 /**
  * @file
  * @brief     This file contains a class that represents the data that is needed to predict positions of an object.
- * @author    Daniel van vliet
+ * @author    Daniel van Vliet
  * @license   See LICENSE
  */
 
