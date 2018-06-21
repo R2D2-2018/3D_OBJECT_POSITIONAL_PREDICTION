@@ -12,9 +12,9 @@
 
 class ObjectData {
   private:
-    std::array<Vector3D, 10> positions;
-    std::array<int, 10> measurementDelay;
-    std::array<Vector3D, 10> speed;
+    std::array<Vector3D, 3> positions;
+    std::array<int, 3> measurementDelay;
+    std::array<Vector3D, 3> speed;
     Vector3D acceleration;
 
   public:
