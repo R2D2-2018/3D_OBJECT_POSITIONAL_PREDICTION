@@ -1,7 +1,7 @@
 /**
  * @file
  * @brief     This file contains a class that represents the data that is needed to predict positions of an object.
- * @author    Daniel van vliet
+ * @author    Daniel van Vliet
  * @license   See LICENSE
  */
 
@@ -10,11 +10,12 @@
 #include "vector3d.hpp"
 #include <array>
 
+namespace PositionPrediction {
 class ObjectData {
   private:
-    std::array<Vector3D, 10> positions;
-    std::array<int, 10> measurementDelay;
-    std::array<Vector3D, 10> speed;
+    std::array<Vector3D, 3> positions;
+    std::array<int, 3> measurementDelay;
+    std::array<Vector3D, 3> speed;
     Vector3D acceleration;
     uint8_t numberOfSamples;
 
@@ -87,7 +88,13 @@ class ObjectData {
      */
     Vector3D getAcceleration();
 
+    /**
+     * @brief a getter for the number of added samples
+     *
+     * @return The number of samples added.
+     */
     uint8_t size();
 };
+} // namespace PositionPrediction
 
 #endif
