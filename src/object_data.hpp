@@ -10,6 +10,7 @@
 #include "vector3d.hpp"
 #include <array>
 
+namespace PositionPrediction{
 class ObjectData {
   private:
     std::array<Vector3D, 3> positions;
@@ -86,5 +87,8 @@ class ObjectData {
      */
     Vector3D getAcceleration();
 };
+}
+
+
 
 #endif

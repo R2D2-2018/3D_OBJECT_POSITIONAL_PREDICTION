@@ -1,5 +1,7 @@
 #include "object_data.hpp"
 
+namespace PositionPrediction
+{
 ObjectData::ObjectData() {
     for (unsigned int i = 0; i < measurementDelay.size(); ++i) {
         measurementDelay[i] = 0;
@@ -50,3 +52,5 @@ void ObjectData::setAcceleration(Vector3D newAcceleration) {
 Vector3D ObjectData::getAcceleration() {
     return acceleration;
 }
+}
+

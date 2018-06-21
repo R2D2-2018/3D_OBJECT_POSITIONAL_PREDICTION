@@ -14,6 +14,7 @@
 #include <array>
 #include <math.h>
 
+namespace PositionPrediction{
 template <int N>
 class ObjectTrajectoryPredictor {
   private:
@@ -152,5 +153,8 @@ class ObjectTrajectoryPredictor {
         }
     }
 };
+}
+
+
 
 #endif // OBJECTTRAJECTORYPREDICTOR_HPP
