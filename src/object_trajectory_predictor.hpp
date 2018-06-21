@@ -55,9 +55,9 @@ class ObjectTrajectoryPredictor {
 
     Vector3D calculatePositionAfterMs(Vector3D position, Vector3D speed, uint32_t ms, Vector3D acceleration) {
         int x, y, z;
-        x = position.getX() + speed.getX() + 0.5 * acceleration.getX() * pow(int(ms) / 1000, 2);
-        y = position.getY() + speed.getY() + 0.5 * acceleration.getY() * pow(int(ms) / 1000, 2);
-        z = position.getZ() + speed.getZ() + 0.5 * acceleration.getZ() * pow(int(ms) / 1000, 2);
+        x = position.getX() + speed.getX() + 0.5 * acceleration.getX() * pow(static_cast<int>(ms) / 1000, 2);
+        y = position.getY() + speed.getY() + 0.5 * acceleration.getY() * pow(static_cast<int>(ms) / 1000, 2);
+        z = position.getZ() + speed.getZ() + 0.5 * acceleration.getZ() * pow(static_cast<int>(ms) / 1000, 2);
         Vector3D newLocation = Vector3D(x, y, z);
         return newLocation;
     }

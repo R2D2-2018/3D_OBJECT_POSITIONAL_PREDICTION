@@ -88,6 +88,11 @@ class ObjectData {
      */
     Vector3D getAcceleration();
 
+    /**
+     * @brief a getter for the number of added samples
+     *
+     * @return The number of samples added.
+     */
     uint8_t size();
 };
 }
